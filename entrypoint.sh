@@ -2,10 +2,7 @@
 
 set -e
 
-echo $CF_API_ENDPOINT
-echo $ORG
-echo $USERNAME
-echo $PASSWORD
+echo $FIREBASE_KEY
 
 cf login -a $CF_API_ENDPOINT -o $ORG -s $SPACE -u $USERNAME -p $PASSWORD
 
