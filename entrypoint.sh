@@ -7,7 +7,7 @@ echo $DOCKER_IMAGE
 
 cf login -a $CF_API_ENDPOINT -o $ORG -s $SPACE -u $USERNAME -p $PASSWORD
 
-if test -z "$DOCKER_IMAGE"
+if [[ ${DOCKER_IMAGE} ]];
 then
   CF_DOCKER_PASSWORD=$CF_DOCKER_PASSWORD cf push $APP_NAME --docker-image $CF_DOCKER_IMAGE --docker-username $CF_DOCKER_USERNAME
 else
