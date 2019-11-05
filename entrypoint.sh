@@ -2,7 +2,8 @@
 
 set -e
 
-echo $FIREBASE_KEY
+echo DOCKER_IMAGE:
+echo $DOCKER_IMAGE
 
 cf login -a $CF_API_ENDPOINT -o $ORG -s $SPACE -u $USERNAME -p $PASSWORD
 
