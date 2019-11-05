@@ -2,9 +2,6 @@
 
 set -e
 
-echo DOCKER_IMAGE2:
-echo $DOCKER_IMAGE
-
 cf login -a $CF_API_ENDPOINT -o $ORG -s $SPACE -u $USERNAME -p $PASSWORD
 
 if [[ ${DOCKER_IMAGE} ]];
