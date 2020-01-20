@@ -2,8 +2,7 @@
 
 set -e
 
-#cf login -a $CF_API_ENDPOINT -o $ORG -s $SPACE -u $USERNAME -p $PASSWORD
-# Login removed, is in ngti/gh-ecr-login 
+cf login -a $CF_API_ENDPOINT -o $ORG -s $SPACE -u $USERNAME -p $PASSWORD
 
 if [[ ${CF_DOCKER_IMAGE} ]];
 then
