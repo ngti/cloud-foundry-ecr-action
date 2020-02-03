@@ -6,7 +6,7 @@ The GitHub Action for [Cloud Foundry CLI](https://docs.cloudfoundry.org/cf-cli/i
 
 ```
 action "Deploy to PWS" {
-  uses = "louisthomas/cloud-foundry-cli-action@master"
+  uses = "ngti/cloud-foundry-ecr-action@master"
   secrets = ["PASSWORD"]
   env = {
     CF_API_ENDPOINT = "<Cloud Foundry API endpoint>"
