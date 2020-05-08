@@ -16,9 +16,6 @@ die() {
 [ -z $CF_DOCKER_USERNAME ] || die "CF_DOCKER_USERNAME parameter required"
 [ -z $CF_DOCKER_PASSWORD ] || die "CF_DOCKER_PASSWORD parameter required"
 
-# TODO: for debugging purpose only, will be removed shortly
-find .
-
 echo "Login to \"$CF_API_ENDPOINT\" using organization \"$ORG\" and space \"$SPACE\""
 cf login -a $CF_API_ENDPOINT -o $ORG -s $SPACE -u $USERNAME -p $PASSWORD
 
