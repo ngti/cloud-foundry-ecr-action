@@ -7,16 +7,30 @@ die() {
   exit 1
 }
 
-echo "Deploying $APP_NAME ..."
-
-[ -z $APP_NAME ] || die "APP_NAME parameter required"
-[ -z $CF_API_ENDPOINT ] || die "CF_API_ENDPOINT parameter required"
-[ -z $ORG ] || die "ORG parameter required"
-[ -z $SPACE ] || die "SPACE parameter required"
-[ -z $USERNAME ] || die "USERNAME parameter required"
-[ -z $PASSWORD ] || die "PASSWORD parameter required"
-[ -z $CF_DOCKER_USERNAME ] || die "CF_DOCKER_USERNAME parameter required"
-[ -z $CF_DOCKER_PASSWORD ] || die "CF_DOCKER_PASSWORD parameter required"
+if [[ -z "$APP_NAME" ]]; then
+  die "APP_NAME parameter required"
+fi
+if [[ -z "$CF_API_ENDPOINT" ]]; then
+  die "CF_API_ENDPOINT parameter required"
+fi
+if [[ -z "$ORG" ]]; then
+  die "ORG parameter required"
+fi
+if [[ -z "$SPACE" ]]; then
+  die "SPACE parameter required"
+fi
+if [[ -z "$USERNAME" ]]; then
+  die "USERNAME parameter required"
+fi
+if [[ -z "$PASSWORD" ]]; then
+  die "PASSWORD parameter required"
+fi
+if [[ -z "$CF_DOCKER_USERNAME" ]]; then
+  die "CF_DOCKER_USERNAME parameter required"
+fi
+if [[ -z "$CF_DOCKER_PASSWORD" ]]; then
+  die "CF_DOCKER_PASSWORD parameter required"
+fi
 
 echo "Login to \"$CF_API_ENDPOINT\" using organization \"$ORG\" and space \"$SPACE\""
 cf login -a $CF_API_ENDPOINT -o $ORG -s $SPACE -u $USERNAME -p $PASSWORD
