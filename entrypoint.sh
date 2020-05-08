@@ -7,6 +7,8 @@ die() {
   exit 1
 }
 
+echo "Deploying $APP_NAME ..."
+
 [ -z $APP_NAME ] || die "APP_NAME parameter required"
 [ -z $CF_API_ENDPOINT ] || die "CF_API_ENDPOINT parameter required"
 [ -z $ORG ] || die "ORG parameter required"
