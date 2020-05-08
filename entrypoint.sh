@@ -7,12 +7,14 @@ die() {
   exit 1
 }
 
-[ -z $APP_NAME ] || die "APP_NAME argument required"
-[ -z $CF_API_ENDPOINT ] || die "CF_API_ENDPOINT argument required"
-[ -z $ORG ] || die "ORG argument required"
-[ -z $SPACE ] || die "SPACE argument required"
-[ -z $USERNAME ] || die "USERNAME argument required"
-[ -z $PASSWORD ] || die "PASSWORD argument required"
+[ -z $APP_NAME ] || die "APP_NAME parameter required"
+[ -z $CF_API_ENDPOINT ] || die "CF_API_ENDPOINT parameter required"
+[ -z $ORG ] || die "ORG parameter required"
+[ -z $SPACE ] || die "SPACE parameter required"
+[ -z $USERNAME ] || die "USERNAME parameter required"
+[ -z $PASSWORD ] || die "PASSWORD parameter required"
+[ -z $CF_DOCKER_USERNAME ] || die "CF_DOCKER_USERNAME parameter required"
+[ -z $CF_DOCKER_PASSWORD ] || die "CF_DOCKER_PASSWORD parameter required"
 
 # TODO: for debugging purpose only, will be removed shortly
 find .
