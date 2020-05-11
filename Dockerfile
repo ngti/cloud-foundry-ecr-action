@@ -10,7 +10,8 @@ LABEL "com.github.actions.icon"="cloud"
 LABEL "com.github.actions.color"="green"
 
 # Install uuidgen
-RUN apk add --no-cache ca-certificates curl bash jq util-linux
+RUN apk add --no-cache ca-certificates curl bash jq util-linux make git groff less python py-pip
+RUN pip install awscli
 
 # Install Cloud Foundry cli
 ADD https://cli.run.pivotal.io/stable?release=linux64-binary&version=6.47.2 /tmp/cf-cli.tgz
