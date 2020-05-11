@@ -32,9 +32,6 @@ if [[ -z "$CF_DOCKER_PASSWORD" ]]; then
   die "CF_DOCKER_PASSWORD parameter required"
 fi
 
-echo "Check caller identity"
-aws sts get-caller-identity
-
 echo "Login to \"$CF_API_ENDPOINT\" using organization \"$ORG\" and space \"$SPACE\""
 cf login -a $CF_API_ENDPOINT -o $ORG -s $SPACE -u $USERNAME -p $PASSWORD
 
