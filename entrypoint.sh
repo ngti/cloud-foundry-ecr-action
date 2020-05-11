@@ -40,7 +40,7 @@ cf login -a $CF_API_ENDPOINT -o $ORG -s $SPACE -u $USERNAME -p $PASSWORD
 
 if [[ ${CF_MANIFEST_FILE} ]]; then
   echo "Deploy \"$APP_NAME\" using manifest file \"$CF_MANIFEST_FILE\""
-  cf push $APP_NAME -f $CF_MANIFEST_FILE
+  cf push $APP_NAME -f $CF_MANIFEST_FILE --docker-username $CF_DOCKER_USERNAME
 else
   export NUM_INSTANCES=${NUM_INSTANCES:-"1"}
   export DISK=${DISK:-"1G"}

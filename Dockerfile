@@ -9,7 +9,6 @@ LABEL "com.github.actions.description"="Wraps the Cloud foundry CLI to enable CF
 LABEL "com.github.actions.icon"="cloud"
 LABEL "com.github.actions.color"="green"
 
-# Install uuidgen
 RUN apk add --no-cache ca-certificates curl bash jq util-linux make git groff less python py-pip
 RUN pip install awscli
 
