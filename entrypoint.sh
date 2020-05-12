@@ -52,8 +52,8 @@ else
     export ARGS="$ARGS --route-path $CF_ROUTE_PATH"
   fi
 
-  if [[ ! -z "$CF_HOSTNAME" ]]; then
-    export ARGS="$ARGS --hostname $CF_HOSTNAME"
+  if [[ ! -z "$CF_SUBDOMAIN" ]]; then
+    export ARGS="$ARGS --hostname $CF_SUBDOMAIN"
   fi
 
   if [[ ${CF_DOCKER_IMAGE} ]]; then
