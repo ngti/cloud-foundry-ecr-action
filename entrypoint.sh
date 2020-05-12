@@ -52,6 +52,10 @@ else
     export ARGS="$ARGS --route-path $CF_ROUTE_PATH"
   fi
 
+  if [[ ! -z "$CF_HOSTNAME" ]]; then
+    export ARGS="$ARGS --hostname $CF_HOSTNAME"
+  fi
+
   if [[ ${CF_DOCKER_IMAGE} ]]; then
     echo "Deploy \"$APP_NAME\" using docker image \"$CF_DOCKER_IMAGE\""
     echo cf push $APP_NAME --docker-image $CF_DOCKER_IMAGE --docker-username $CF_DOCKER_USERNAME $ARGS
