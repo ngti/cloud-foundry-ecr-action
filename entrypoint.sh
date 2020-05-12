@@ -43,8 +43,9 @@ else
   export DISK=${DISK:-"1G"}
   export MEMORY=${MEMORY:-"1G"}
   export HEALTH_CHECK_TYPE=${HEALTH_CHECK_TYPE:-"port"}
+  export STACK=${STACK:-"cflinuxfs3"}
 
-  export ARGS="-i $NUM_INSTANCES -k $DISK -m $MEMORY --health-check-type $HEALTH_CHECK_TYPE"
+  export ARGS="-i $NUM_INSTANCES -k $DISK -m $MEMORY -s $STACK --health-check-type $HEALTH_CHECK_TYPE"
 
   if [[ ${CF_DOCKER_IMAGE} ]]; then
     echo "Deploy \"$APP_NAME\" using docker image \"$CF_DOCKER_IMAGE\""
