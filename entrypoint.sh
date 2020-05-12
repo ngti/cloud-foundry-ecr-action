@@ -47,6 +47,10 @@ else
 
   export ARGS="-i $NUM_INSTANCES -k $DISK -m $MEMORY -s $STACK --health-check-type $HEALTH_CHECK_TYPE"
 
+  if [[ ! -z "$CF_ROUTE_PATH" ]]; then
+    export ARGS="$ARGS --route-path $CF_ROUTE_PATH"
+  fi
+
   if [[ ${CF_DOCKER_IMAGE} ]]; then
     echo "Deploy \"$APP_NAME\" using docker image \"$CF_DOCKER_IMAGE\""
     cf push $APP_NAME --docker-image $CF_DOCKER_IMAGE --docker-username $CF_DOCKER_USERNAME $ARGS
