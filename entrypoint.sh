@@ -7,9 +7,6 @@ die() {
   exit 1
 }
 
-if [[ -z "$APP_NAME" ]]; then
-  die "APP_NAME parameter required"
-fi
 if [[ -z "$CF_API_ENDPOINT" ]]; then
   die "CF_API_ENDPOINT parameter required"
 fi
@@ -25,20 +22,14 @@ fi
 if [[ -z "$PASSWORD" ]]; then
   die "PASSWORD parameter required"
 fi
-if [[ -z "$CF_DOCKER_USERNAME" ]]; then
-  die "CF_DOCKER_USERNAME parameter required"
-fi
-if [[ -z "$CF_DOCKER_PASSWORD" ]]; then
-  die "CF_DOCKER_PASSWORD parameter required"
-fi
 
 echo "Login to \"$CF_API_ENDPOINT\" using organization \"$ORG\" and space \"$SPACE\""
 cf login -a $CF_API_ENDPOINT -o $ORG -s $SPACE -u $USERNAME -p $PASSWORD
 
 if [[ ${CF_MANIFEST_FILE} ]]; then
-  echo "Deploy \"$APP_NAME\" using manifest file \"$CF_MANIFEST_FILE\""
-  echo cf push $APP_NAME -f $CF_MANIFEST_FILE
-  cf push $APP_NAME -f $CF_MANIFEST_FILE
+  echo "Deploy using manifest file \"$CF_MANIFEST_FILE\""
+  echo cf push -f $CF_MANIFEST_FILE
+  cf push -f $CF_MANIFEST_FILE
 else
   export NUM_INSTANCES=${NUM_INSTANCES:-"1"}
   export DISK=${DISK:-"1G"}
@@ -57,6 +48,16 @@ else
   fi
 
   if [[ ${CF_DOCKER_IMAGE} ]]; then
+    if [[ -z "$APP_NAME" ]]; then
+      die "APP_NAME parameter required"
+    fi
+    if [[ -z "$CF_DOCKER_USERNAME" ]]; then
+      die "CF_DOCKER_USERNAME parameter required"
+    fi
+    if [[ -z "$CF_DOCKER_PASSWORD" ]]; then
+      die "CF_DOCKER_PASSWORD parameter required"
+    fi
+
     echo "Deploy \"$APP_NAME\" using docker image \"$CF_DOCKER_IMAGE\""
     echo cf push $APP_NAME --docker-image $CF_DOCKER_IMAGE --docker-username $CF_DOCKER_USERNAME $ARGS
     cf push $APP_NAME --docker-image $CF_DOCKER_IMAGE --docker-username $CF_DOCKER_USERNAME $ARGS
